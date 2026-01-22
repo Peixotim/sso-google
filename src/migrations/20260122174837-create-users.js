@@ -16,6 +16,7 @@ module.exports = {
       google_id: {
         type: Sequelize.STRING,
         unique: true,
+        allowNull: true,
       },
       email: {
         type: Sequelize.STRING,
@@ -24,6 +25,7 @@ module.exports = {
       },
       avatar_url: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       role: {
         type: Sequelize.ENUM("admin", "user"),
