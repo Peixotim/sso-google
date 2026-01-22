@@ -35,6 +35,7 @@ User.init(
       type: DataTypes.STRING,
       field: "google_id",
       unique: true,
+      allowNull: true
     },
     email: {
       type: DataTypes.STRING,
@@ -44,6 +45,7 @@ User.init(
     avatarUrl: {
       type: DataTypes.STRING,
       field: "avatar_url",
+      allowNull:true
     },
     role: {
       type: DataTypes.ENUM(...Object.values(UserRole)),
