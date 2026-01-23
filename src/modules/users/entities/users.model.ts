@@ -45,7 +45,7 @@ User.init(
     avatarUrl: {
       type: DataTypes.STRING,
       field: "avatar_url",
-      allowNull:true
+      allowNull: true
     },
     role: {
       type: DataTypes.ENUM(...Object.values(UserRole)),
