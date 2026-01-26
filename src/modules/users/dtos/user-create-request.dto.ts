@@ -10,7 +10,7 @@ export const UserCreateSchema = z.object({
     .string({ error: "O e-mail é obrigatório" })
     .email("Formato de e-mail inválido"),
 
-  googleId: z.string(),
+  google_id: z.string(),
 
   avatarUrl: z.string().url("URL do avatar inválida"),
 
