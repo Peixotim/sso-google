@@ -23,11 +23,12 @@ export class UserRepository {
 
     return count > 0;
   }
+
   public async create(data: UserCreateDTO): Promise<User> {
     const newUser = await User.create({
       name: data.name,
       email: data.email,
-      googleId: data.googleId || null,
+      google_id: data.google_id || null,
       avatarUrl: data.avatarUrl || null,
       role: data.role || UserRole.USER,
       isActive: data.isActive ?? true,
