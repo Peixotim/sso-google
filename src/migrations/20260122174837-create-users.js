@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -17,6 +17,7 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true,
         allowNull: true,
+        field: "google_id",
       },
       email: {
         type: Sequelize.STRING,
@@ -30,7 +31,7 @@ module.exports = {
       role: {
         type: Sequelize.ENUM("admin", "user"),
         defaultValue: "user",
-      },      
+      },
       is_active: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
@@ -46,10 +47,10 @@ module.exports = {
     });
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable("users");
     await queryInterface.sequelize.query(
-      'DROP TYPE IF EXISTS "enum_users_role";'
-      );
-  }
+      'DROP TYPE IF EXISTS "enum_users_role";',
+    );
+  },
 };
