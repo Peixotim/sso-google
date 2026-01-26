@@ -14,6 +14,22 @@ export class UsersController {
     }
   }
 
+  public async findByMail(req: Request, res: Response) {
+    try {
+      const email = req.params.email;
+      if (typeof email !== "string") {
+        return res
+          .status(400)
+          .json({ error: "Invalid or missing email parameter." });
+      }
+      const user = await this.usersService.findByEmail(email);
+      return res.status(200).json(user);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+
   public async create(req: Request, res: Response) {
     const validation = UserCreateSchema.safeParse(req.body);
     if (!validation.success) {
