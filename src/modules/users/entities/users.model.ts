@@ -8,13 +8,10 @@ import {
 import sequelize from "../../../config/database.js";
 import { UserRole } from "../enums/UserRole.enum.js";
 
-class User extends Model<
-  InferAttributes<User>,
-  InferCreationAttributes<User>
-> {
+class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare id: CreationOptional<string>;
   declare name: string | null;
-  declare googleId: string | null;
+  declare google_id: string | null;
   declare email: string;
   declare avatarUrl: string | null;
   declare role: UserRole;
@@ -31,11 +28,11 @@ User.init(
       primaryKey: true,
     },
     name: DataTypes.STRING,
-    googleId: {
+    google_id: {
       type: DataTypes.STRING,
       field: "google_id",
       unique: true,
-      allowNull: true
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -45,7 +42,7 @@ User.init(
     avatarUrl: {
       type: DataTypes.STRING,
       field: "avatar_url",
-      allowNull: true
+      allowNull: true,
     },
     role: {
       type: DataTypes.ENUM(...Object.values(UserRole)),
@@ -70,7 +67,7 @@ User.init(
     tableName: "users",
     underscored: true,
     timestamps: true,
-  }
+  },
 );
 
 export default User;
