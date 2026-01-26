@@ -14,10 +14,9 @@ export function ensureAuthenticated(
   res: Response,
   next: NextFunction,
 ) {
-  // 1. Tenta pegar do Cookie (Prioridade no seu novo fluxo)
   let token = req.cookies.token;
 
-  // (Opcional) Fallback: Se não tiver cookie, tenta pegar do Header (caso teste via Postman/Insomnia sem cookie)
+  // Fallback: Se não tiver cookie, tenta pegar do Header (caso teste via Postman/Insomnia sem cookie)
   if (!token) {
     const authHeader = req.headers.authorization;
     if (authHeader) {
@@ -34,7 +33,7 @@ export function ensureAuthenticated(
     const { id, role, email } = decoded as TokenPayload;
 
     // Injeta os dados no request para usar nos controllers
-    req.user = { id, role, email }; // Certifique-se de ter estendido a tipagem do Express
+    req.user = { id, role, email };
 
     return next();
   } catch (error) {
